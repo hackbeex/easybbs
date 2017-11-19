@@ -29,3 +29,4 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('/', 'PagesController@home')->name('home');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

@@ -14,11 +14,13 @@
         "overtrue/laravel-lang": "~3.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "~3.1",
         "barryvdh/laravel-ide-helper": "^2.4",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "summerblue/generator": "~0.6"
     },
     "autoload": {
         "classmap": [

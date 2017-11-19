@@ -12,7 +12,10 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+	{
+		\App\Models\User::observe(\App\Observers\UserObserver::class);
+		\App\Models\Topic::observe(\App\Observers\TopicObserver::class);
+
         \Carbon\Carbon::setLocale('zh');
     }
 
@@ -25,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() == 'local') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+            $this->app->register(\Summerblue\Generator\GeneratorsServiceProvider::class);
         }
     }
 }
