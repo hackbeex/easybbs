@@ -10,6 +10,7 @@
     <title>@yield('title', 'EasyBBS') - EasyBBS</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 
 <body>
@@ -28,5 +29,6 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
