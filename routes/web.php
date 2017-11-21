@@ -27,6 +27,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/', 'PagesController@home')->name('home');
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 Route::resource('topics', 'TopicsController');
