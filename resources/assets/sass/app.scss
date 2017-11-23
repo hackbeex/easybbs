@@ -94,6 +94,13 @@ html {
     .pagination {
         margin: 12px 0;
     }
+    .meta {
+        font-size: .9em;
+        color: #b3b3b3;
+    }
+    .reply-content {
+        margin: 6px 0;
+    }
 }
 
 .topics-index-page, .categories-show-page{
@@ -128,11 +135,32 @@ html {
 .topics-show-page {
     .panel {
         padding: 15px;
-
         h1 {
             margin: 0.4em auto 0.6em;
             font-size: 28px;
             line-height: 38px;
         }
+    }
+}
+.topic-reply {
+    hr {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    a {
+        color: inherit;
+    }
+    .meta {
+        font-size: .9em;
+        color: #b3b3b3;
+    }
+}
+.notifications-badge {
+    margin-top: -1;
+    .badge-fade {
+        background-color: #EBE8E8;
+    }
+    .badge-hint {
+        background-color: #d15b47 !important;;
     }
 }
