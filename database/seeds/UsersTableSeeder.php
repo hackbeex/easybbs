@@ -26,12 +26,16 @@ class UsersTableSeeder extends Seeder
         $userArray = $users->makeVisible(['password', 'remember_token'])->toArray();
         User::insert($userArray);
 
-        // 单独处理第一个用户的数据
+        // 1 号用户为站长
         $user = User::find(1);
         $user->name = 'Hackbee';
         $user->email = 'hackbee@outlook.com';
         $user->avatar = $avatars[0];
         $user->save();
+        $user->assignRole('Founder');
 
+        // 2 号用户指派为管理员
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
     }
 }
