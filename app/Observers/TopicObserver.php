@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Topic;
+use App\Models\Reply;
 use App\Jobs\TranslateSlugJob;
 
 // creating, created, updating, updated, saving,
@@ -22,5 +23,10 @@ class TopicObserver
         if ( ! $topic->slug) {
             dispatch(new TranslateSlugJob($topic));
         }
+    }
+
+    public function deleted(Topic $topic)
+    {
+        \DB::table(Reply::getModel()->getTable())->where('topic_id', $topic->id)->delete();
     }
 }
