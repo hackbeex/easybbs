@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
 use App\Models\User;
 use App\Models\Topic;
 use App\Models\Category;
@@ -13,6 +14,7 @@ class CategoriesController extends Controller
     {
         $topics = $topic->withOrder($request->order)->where('category_id', $category->id)->paginate(20);
         $active_users = (new User)->getActiveUsers();
-        return view('topics.index', compact('topics', 'category', 'active_users'));
+        $links = (new Link)->getAllCached();
+        return view('topics.index', compact('topics', 'category', 'active_users', 'links'));
     }
 }
