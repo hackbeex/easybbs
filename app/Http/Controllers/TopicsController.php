@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
 use Auth;
+use App\Models\User;
 use App\Models\Topic;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\TopicRequest;
 use App\Tools\ImageUploadTool;
 
@@ -20,7 +20,8 @@ class TopicsController extends Controller
 	public function index(Request $request, Topic $topic)
 	{
         $topics = $topic->withOrder($request->order)->paginate(20);
-		return view('topics.index', compact('topics'));
+        $active_users = (new User)->getActiveUsers();
+		return view('topics.index', compact('topics', 'active_users'));
 	}
 
     public function show(Request $request, Topic $topic)

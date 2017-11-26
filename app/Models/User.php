@@ -13,6 +13,7 @@ class User extends Authenticatable
     use Notifiable {
         notify as protected laravelNotify;
     }
+    use Traits\ActiveUserHelper;
 
     protected $fillable = [
         'name', 'email', 'password', 'introduction', 'avatar',
