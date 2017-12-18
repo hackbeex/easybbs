@@ -29,7 +29,7 @@
                     @endcan
                 </div>
                 <div class="reply-content">
-                    {!! $reply->content !!}
+                    {!! replace_at_user($reply->content) !!}
                 </div>
             </div>
         </div>

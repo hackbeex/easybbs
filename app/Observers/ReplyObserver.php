@@ -3,7 +3,9 @@
 namespace App\Observers;
 
 use App\Models\Reply;
+use App\Models\User;
 use App\Notifications\TopicReplied;
+use App\Notifications\TopicRepliedRemind;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -18,6 +20,15 @@ class ReplyObserver
         // 如果评论的作者是话题的作者，不需要通知
         if ( ! $reply->user->isAuthorOf($topic)) {
             $topic->user->notify(new TopicReplied($reply));
+        }
+
+        // @某人通知
+        if (preg_match_all('#@(\S+?) #', $reply->content, $matches)) {
+            $userNames = array_unique($matches[1]);
+            $users = User::whereIn('name', $userNames)->get();
+            foreach ($users as $user) {
+                $user->notify(new TopicRepliedRemind($reply));
+            }
         }
     }
 
